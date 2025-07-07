@@ -1,0 +1,43 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.logs
+
+# Environment variables
+.env
+.env.*.local
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+
+# SQLite database
+*.db
+*.db-journal
+
+# Prisma
+prisma/migrations/dev.db
+prisma/dev.db
+prisma/.env
+
+# Cache
+.cache/
+vite-cache/
+
+# Optional: Mac system file
+*.swp
+
+# Optional: local dev overrides
+*.local.ts

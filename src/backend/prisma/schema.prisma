@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  //output   = "../prisma/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  submittedTasks Task[] @relation("SubmitterTasks")
+  assignedTasks  Task[] @relation("AssigneeTasks")
+}
+
+model Task {
+  id          Int       @id @default(autoincrement())
+  number      String    @unique // e.g., TSK001
+  title       String
+  description String
+  status      TaskStatus @default(TO_DO)
+  createdAt   DateTime   @default(now())
+
+  submitter   User      @relation("SubmitterTasks", fields: [submitterId], references: [id])
+  submitterId Int
+
+  assignee    User?     @relation("AssigneeTasks", fields: [assigneeId], references: [id])
+  assigneeId  Int?
+}
+
+enum TaskStatus {
+  TO_DO
+  IN_PROGRESS
+  DONE
+}
