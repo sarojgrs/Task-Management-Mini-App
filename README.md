@@ -65,7 +65,7 @@ Users can submit tasks, assign them, and track their progress using a simple and
 yarn install
 ```
 
-### 2. User shell script to setup all at once and you can ignore below
+### 2. Execute shell script to setup all at once and you can ignore below
 
 ```bash
   sh setup_bash.sh
